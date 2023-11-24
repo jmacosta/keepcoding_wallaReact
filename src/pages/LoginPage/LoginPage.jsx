@@ -1,3 +1,4 @@
+import './login.css';
 function LoginPage() {
   return (
     <main id='main'>
