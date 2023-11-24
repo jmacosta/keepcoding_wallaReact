@@ -3,7 +3,7 @@ function LoginPage() {
     <main id='main'>
       <form className='form_main' action='' id='form-login'>
         <div className='form_main__logo'>
-          <img src='assets/logo_portrait.svg' />
+          <img src='../../../public/assets/logo_portrait.svg' />
         </div>
         <p className='heading'>Iniciar sesión</p>
         <div className='inputContainer'>
