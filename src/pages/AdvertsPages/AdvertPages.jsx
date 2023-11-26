@@ -1,28 +1,44 @@
-function AdvertPages(product) {
+import { useState } from 'react';
+import magnifyGlass from '../../assets/magnify-glass.svg';
+import noImage from '../../assets/no-image.jpg';
+import './advertpages.css';
+
+const AdvertPages = () => {
+  const product = {
+    name: 'Sell Thing',
+    description: 'Description thing',
+    image: 'no-image.jpg',
+    price: 50,
+    sellOrSearch: true
+  };
+
+  const [imageError, setImageError] = useState(false);
   return (
     <a href='/product_detail.html?id=${product.id}&_expand=user'>
-      <div class='card'>
+      <div className='card'>
         <figure>
-          <div class='sell_or_search'>
-            <img src='${sellOrSeachIcon.image}' alt='${sellOrSeachIcon.alt}' />
+          <div className='sell_or_search'>
+            <img src={'/src/assets/search.svg'} alt={`none`} />
           </div>
           <img
-            class='product_image'
-            src='${product.image}'
-            onerror="this.src='assets/no-image.jpg';"
-            alt='${product.name}'
+            className='product_image'
+            src={imageError ? noImage : `../../assets/${product.image}`}
+            onError={() => {
+              setImageError(true);
+            }}
+            alt={product.name}
           />
         </figure>
-        <div class='text-content'>
-          <div class='product_name'>${product.name}</div>
-          <div class='product_description'>${product.description}</div>
-          <div class='product_price'>${product.price}€</div>
+        <div className='text-content'>
+          <div className='product_name'>{product.name}</div>
+          <div className='product_description'>{product.description}</div>
+          <div className='product_price'>{product.price}€</div>
         </div>
-        <div class='overlay'>
-          <img src='assets/magnify-glass.svg' />
+        <div className='overlay'>
+          <img src={magnifyGlass} />
         </div>
       </div>
     </a>
   );
-}
+};
 export default AdvertPages;
