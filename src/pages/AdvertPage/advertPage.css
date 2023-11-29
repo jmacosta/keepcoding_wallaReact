@@ -23,10 +23,10 @@ button {
   box-sizing: border-box;
 }
 
-body {
+main {
   font-family: 'Raleway';
 }
-body .card {
+main .card {
   width: 50vw;
   min-width: 800px;
   position: absolute;
@@ -38,7 +38,7 @@ body .card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   transition: all 0.3s;
 }
-body .card:hover {
+main .card:hover {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #header_product_detail {
@@ -57,7 +57,7 @@ body .card:hover {
   fill: #fff;
 }
 
-body .card nav {
+main .card nav {
   color: #727272;
   text-transform: uppercase;
   padding: 20px;
@@ -67,29 +67,29 @@ body .card nav {
   justify-content: flex-start;
 }
 
-body .card nav svg.arrow {
+main .card nav img.arrow {
   float: left;
   height: 15px;
   width: 15px;
   margin-right: 10px;
   fill: var(--primary-color);
 }
-body .card .photo {
+main .card .photo {
   padding: 30px;
   width: 45%;
   text-align: center;
   float: left;
 }
-body .card .photo img {
+main .card .photo img {
   max-height: 240px;
 }
-body .card .description {
+main .card .description {
   padding: 30px;
   float: left;
   width: 55%;
   border-left: 2px solid #efefef;
 }
-body .card .description h1 {
+main .card .description h1 {
   color: #515151;
   font-weight: 300;
   padding-top: 15px;
@@ -97,27 +97,27 @@ body .card .description h1 {
   font-size: 30px;
   font-weight: 300;
 }
-body .card .description h2 {
+main .card .description h2 {
   color: #515151;
   margin: 0;
   text-transform: uppercase;
   font-weight: 500;
 }
-body .card .description h4 {
+main .card .description h4 {
   margin: 1rem;
   color: #727272;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 12px;
 }
-body .card .description p {
+main .card .description p {
   font-size: 12px;
   line-height: 20px;
   color: #727272;
   padding: 20px 0;
   margin: 0;
 }
-body .card .description button {
+main .card .description button {
   outline: 0;
   border: 0;
   /* background: none; */
@@ -132,12 +132,12 @@ body .card .description button {
   transition: all 0.3s ease;
   font-weight: 500;
 }
-body .card .description button:hover {
+main .card .description button:hover {
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   cursor: pointer;
 }
-body .card .description button.delete_product:hover {
+main .card .description button.delete_product:hover {
   background-color: crimson;
   color: white;
   cursor: pointer;
