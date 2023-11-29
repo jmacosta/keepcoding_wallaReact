@@ -168,8 +168,9 @@
   transition: transform 300ms ease;
 }
 
-.radio-tile-group .input-container .icon svg {
+.radio-tile-group .input-container .icon img {
   fill: var(--primary-color);
+
   width: 2rem;
   height: 2rem;
 }
