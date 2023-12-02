@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getLatestAdverts } from '../../api/services.js';
 import magnifyGlass from '../../assets/magnify-glass.svg';
 import noImage from '../../assets/no-image.jpg';
 import { sellSearchIcon } from '../../utils/sellSearchIcon.js';
 import './advertpages.css';
 
 const AdvertPages = () => {
+  const [adverts, setAdverts] = useState([]);
   const product = {
     name: 'Sell Thing',
     description: 'Description thing',
@@ -12,6 +14,9 @@ const AdvertPages = () => {
     price: 50,
     sellOrSearch: false
   };
+  useEffect(() => {
+    getLatestAdverts().then(adverts => setAdverts(adverts));
+  }, []);
 
   const [imageError, setImageError] = useState(false);
   return (
