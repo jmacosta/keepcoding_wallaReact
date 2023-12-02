@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import magnifyGlass from '../../assets/magnify-glass.svg';
 import noImage from '../../assets/no-image.jpg';
+import { sellSearchIcon } from '../../utils/sellSearchIcon.js';
 import './advertpages.css';
 
 const AdvertPages = () => {
@@ -9,7 +10,7 @@ const AdvertPages = () => {
     description: 'Description thing',
     image: 'no-image.jpg',
     price: 50,
-    sellOrSearch: true
+    sellOrSearch: false
   };
 
   const [imageError, setImageError] = useState(false);
@@ -18,7 +19,10 @@ const AdvertPages = () => {
       <div className='card'>
         <figure>
           <div className='sell_or_search'>
-            <img src={'/src/assets/search.svg'} alt={`none`} />
+            <img
+              src={sellSearchIcon(product.sellOrSearch).image}
+              alt={sellSearchIcon(product.sellOrSearch).alt}
+            />
           </div>
           <img
             className='product_image'
