@@ -4,8 +4,8 @@ import './App.css';
 import Layout from './Components/Layout/Layout';
 import AdvertPage from './pages/AdvertPage';
 import AdvertsPages from './pages/AdvertsPages';
-import LoginPage from './pages/LoginPage/LoginPage';
 import NewAdvertPage from './pages/NewAdvertPage';
+import LoginPage from './pages/auth/LoginPage/LoginPage';
 
 function App() {
   const [count, setCount] = useState(0);

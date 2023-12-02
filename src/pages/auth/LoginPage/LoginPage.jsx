@@ -1,6 +1,6 @@
-import AtIcon from '../../assets/atIcon.svg?react';
-import LockIcon from '../../assets/lockIcon.svg?react';
-import Logo from '../../assets/logo_portrait.svg?react';
+import AtIcon from '../../../assets/atIcon.svg?react';
+import LockIcon from '../../../assets/lockIcon.svg?react';
+import Logo from '../../../assets/logo_portrait.svg?react';
 import './login.css';
 
 function LoginPage() {
@@ -54,13 +54,13 @@ function LoginPage() {
         <div className='signupContainer'>
           <label>
             <input type='checkbox' />
-            Recuerdame
+            Recuerdame en este dispositivo
           </label>
 
-          <div className='signupContainerButtons'>
+          {/* <div className='signupContainerButtons'>
             <button id='registerButton'>Regístrate</button>
             <button id='exitButton'>Salir</button>
-          </div>
+          </div> */}
         </div>
       </form>
     </main>
