@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import AtIcon from '../../../assets/atIcon.svg?react';
 import LockIcon from '../../../assets/lockIcon.svg?react';
 import Logo from '../../../assets/logo_portrait.svg?react';
+import { Button } from '../../sharedComponents/Button';
+import { login } from '../service';
 import './login.css';
 
 function LoginPage() {
@@ -10,9 +13,34 @@ function LoginPage() {
     width: '16',
     class: 'inputIcon'
   };
+  const [credentials, setCredentials] = useState({
+    username: '',
+    password: ''
+  });
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    await login({
+      email: event.target.email.value,
+      password: event.target.password.value
+    });
+  };
+  const handleCredentialsChange = event => {
+    setCredentials({
+      ...credentials,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const disabled = !(credentials.username && credentials.password);
   return (
     <main>
-      <form className='form_main' action='' id='form-login'>
+      <form
+        className='form_main'
+        action=''
+        id='form-login'
+        onSubmit={handleSubmit}
+      >
         <div className='form_main__logo'>
           <Logo height={'10vh'} />
         </div>
@@ -29,7 +57,9 @@ function LoginPage() {
             id='username'
             className='inputField'
             type='email'
-            name='email'
+            name='username'
+            onChange={handleCredentialsChange}
+            value={credentials.username}
           />
         </div>
 
@@ -46,21 +76,20 @@ function LoginPage() {
             className='inputField'
             type='password'
             name='password'
+            onChange={handleCredentialsChange}
+            value={credentials.password}
           />
         </div>
 
-        <button id='submitButton'>Enviar</button>
+        <Button type='submit' className='submitButton' disabled={disabled}>
+          Enviar
+        </Button>
 
         <div className='signupContainer'>
           <label>
             <input type='checkbox' />
             Recuerdame en este dispositivo
           </label>
-
-          {/* <div className='signupContainerButtons'>
-            <button id='registerButton'>Regístrate</button>
-            <button id='exitButton'>Salir</button>
-          </div> */}
         </div>
       </form>
     </main>
