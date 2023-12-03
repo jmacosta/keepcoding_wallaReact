@@ -14,16 +14,13 @@ function LoginPage() {
     class: 'inputIcon'
   };
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
   const handleSubmit = async event => {
     event.preventDefault();
-    await login({
-      email: event.target.email.value,
-      password: event.target.password.value
-    });
+    await login(credentials);
   };
   const handleCredentialsChange = event => {
     setCredentials({
@@ -54,12 +51,12 @@ function LoginPage() {
           />
           <input
             placeholder='Email'
-            id='username'
+            id='email'
             className='inputField'
             type='email'
-            name='username'
+            name='email'
             onChange={handleCredentialsChange}
-            value={credentials.username}
+            value={credentials.email}
           />
         </div>
 
