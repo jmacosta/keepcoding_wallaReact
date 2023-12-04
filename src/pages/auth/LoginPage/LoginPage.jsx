@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AtIcon from '../../../assets/atIcon.svg?react';
 import LockIcon from '../../../assets/lockIcon.svg?react';
 import Logo from '../../../assets/logo_portrait.svg?react';
-import { Button } from '../../sharedComponents/Button';
+import { Button } from '../../../Components/sharedComponents/Button';
 import { login } from '../service';
 import './login.css';
 
