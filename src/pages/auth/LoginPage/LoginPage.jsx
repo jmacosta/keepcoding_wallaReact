@@ -15,7 +15,8 @@ function LoginPage() {
   };
   const [credentials, setCredentials] = useState({
     email: '',
-    password: ''
+    password: '',
+    rememberMe: ''
   });
 
   const handleSubmit = async event => {
@@ -28,8 +29,14 @@ function LoginPage() {
       [event.target.name]: event.target.value
     });
   };
+  const handleRememberMeChange = event => {
+    setCredentials({
+      ...credentials,
+      [event.target.name]: event.target.checked
+    });
+  };
 
-  const disabled = !(credentials.username && credentials.password);
+  const disabled = !(credentials.email && credentials.password);
   return (
     <main>
       <form
@@ -84,7 +91,12 @@ function LoginPage() {
 
         <div className='signupContainer'>
           <label>
-            <input type='checkbox' />
+            <input
+              type='checkbox'
+              name='rememberMe'
+              onChange={handleRememberMeChange}
+              checked={credentials.rememberMe}
+            />
             Recuerdame en este dispositivo
           </label>
         </div>
