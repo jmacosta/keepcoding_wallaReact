@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getLatestAdverts } from '../../api/services.js';
+import { getLatestAdverts } from '../../api/service.js';
 import magnifyGlass from '../../assets/magnify-glass.svg';
 import noImage from '../../assets/no-image.jpg';
 import { sellSearchIcon } from '../../utils/sellSearchIcon.js';
