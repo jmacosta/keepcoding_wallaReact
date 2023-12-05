@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './Components/Layout/Layout';
 import AdvertPage from './pages/AdvertPage';
-import AdvertsPages from './pages/AdvertsPages';
+import AdvertsPage from './pages/AdvertsPage/AdvertsPage';
 import NewAdvertPage from './pages/NewAdvertPage';
 import LoginPage from './pages/auth/LoginPage/LoginPage';
 
@@ -11,7 +11,7 @@ function App() {
     <Routes>
       <Route path='/login' element={<LoginPage />}></Route>
       <Route path='/adverts' element={<Layout />}>
-        <Route index element={<AdvertsPages />} />
+        <Route index element={<AdvertsPage />} />
         <Route path=':adverId' element={<AdvertPage />} />
         <Route path='new' element={<NewAdvertPage />} />
       </Route>
