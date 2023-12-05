@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import magnifyGlass from '../../assets/magnify-glass.svg';
-import noImage from '../../assets/no-image.jpg';
-import { sellSearchIcon } from '../../utils/sellSearchIcon.js';
-export const AdvertListCard = ({ sale, photo, name, price, tags }) => {
+import magnifyGlass from '../../../assets/magnify-glass.svg';
+import noImage from '../../../assets/no-image.jpg';
+import { sellSearchIcon } from '../../../utils/sellSearchIcon';
+export const AdvertCard = ({ sale, photo, name, price, tags }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
