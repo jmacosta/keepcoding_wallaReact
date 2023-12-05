@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './Components/Layout/Layout';
@@ -8,8 +7,6 @@ import NewAdvertPage from './pages/NewAdvertPage';
 import LoginPage from './pages/auth/LoginPage/LoginPage';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Routes>
       <Route path='/login' element={<LoginPage />}></Route>
