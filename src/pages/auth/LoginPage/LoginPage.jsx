@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { Button } from '../../../Components/sharedComponents/Button';
 import AtIcon from '../../../assets/atIcon.svg?react';
 import LockIcon from '../../../assets/lockIcon.svg?react';
 import Logo from '../../../assets/logo_portrait.svg?react';
-import { Button } from '../../../Components/sharedComponents/Button';
 import { login } from '../service';
 import './login.css';
 
@@ -38,7 +38,7 @@ function LoginPage() {
 
   const disabled = !(credentials.email && credentials.password);
   return (
-    <main>
+    <main className='MainLoginPage'>
       <form
         className='form_main'
         action=''
