@@ -148,9 +148,9 @@ main .card .description button.delete_product:hover {
   padding-left: 1rem;
   border-radius: 100px;
 
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
 }
 .sell_or_search img {
   filter: invert();
-  height: 30px;
+  height: 25px;
 }
