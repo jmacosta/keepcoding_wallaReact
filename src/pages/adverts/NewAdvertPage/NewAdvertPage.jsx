@@ -1,6 +1,6 @@
-import close from '../../assets/close.svg';
-import searchIcon from '../../assets/search_icon.svg';
-import sellIcon from '../../assets/sell_icon.svg';
+import close from '../../../assets/close.svg';
+import searchIcon from '../../../assets/search_icon.svg';
+import sellIcon from '../../../assets/sell_icon.svg';
 import './NewAdvertPage.css';
 function NewAdvertPage() {
   return (

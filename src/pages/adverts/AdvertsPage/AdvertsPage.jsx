@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Button } from '../../Components/sharedComponents/Button.jsx';
-import { getLatestAdverts } from '../../api/service.js';
-import { AdvertCard } from './components/AdvertCard.jsx';
+import { Button } from '../../../Components/sharedComponents/Button.jsx';
+import { getLatestAdverts } from '../../../api/service.js';
+import { AdvertCard } from '../AdvertsPage/components/AdvertCard.jsx';
 
-import { Aside } from '../../Components/Layout/Aside.jsx';
-import { Main } from '../../Components/Layout/Main.jsx';
+import { Aside } from '../../../Components/Layout/Aside.jsx';
+import { Main } from '../../../Components/Layout/Main.jsx';
+import { FilterAdverts } from '../AdvertsPage/components/FilterAdverts.jsx';
 import './advertspage.css';
-import { FilterAdverts } from './components/FilterAdverts.jsx';
 
 const AdvertsPage = () => {
   const [adverts, setAdverts] = useState([]);

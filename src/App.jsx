@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './Components/Layout/Layout';
-import AdvertPage from './pages/AdvertPage';
-import AdvertsPage from './pages/AdvertsPage/AdvertsPage';
-import NewAdvertPage from './pages/NewAdvertPage';
+import AdvertPage from './pages/adverts/AdvertPage';
+import AdvertsPage from './pages/adverts/AdvertsPage';
+import NewAdvertPage from './pages/adverts/NewAdvertPage';
 import LoginPage from './pages/auth/LoginPage/LoginPage';
 
 function App() {

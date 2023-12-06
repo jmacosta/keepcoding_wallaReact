@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import arrowBack from '../../assets/arrowBack.svg';
-import noImage from '../../assets/no-image.jpg';
+import arrowBack from '../../../assets/arrowBack.svg';
+import noImage from '../../../assets/no-image.jpg';
 import './advertPage.css';
 function AdvertPage() {
   const product = {

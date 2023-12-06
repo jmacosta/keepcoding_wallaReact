@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import magnifyGlass from '../../../assets/magnify-glass.svg';
-import noImage from '../../../assets/no-image.jpg';
-import { sellSearchIcon } from '../../../utils/sellSearchIcon';
-export const AdvertCard = ({ sale, photo, name, price, tags }) => {
+import { Link } from 'react-router-dom';
+import magnifyGlass from '../../../../assets/magnify-glass.svg';
+import noImage from '../../../../assets/no-image.jpg';
+import { sellSearchIcon } from '../../../../utils/sellSearchIcon';
+export const AdvertCard = ({ sale, photo, name, price, tags, id }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <a href='/product_detail.html?id=${product.id}&_expand=user'>
+    <Link to={`${id}`}>
       <div className='card'>
         <figure>
           <div className='sell_or_search'>
@@ -33,6 +34,6 @@ export const AdvertCard = ({ sale, photo, name, price, tags }) => {
           <img src={magnifyGlass} />
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
