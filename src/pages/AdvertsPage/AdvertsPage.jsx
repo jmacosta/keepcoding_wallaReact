@@ -6,6 +6,7 @@ import { AdvertCard } from './components/AdvertCard.jsx';
 import { Aside } from '../../Components/Layout/Aside.jsx';
 import { Main } from '../../Components/Layout/Main.jsx';
 import './advertspage.css';
+import { FilterAdverts } from './components/FilterAdverts.jsx';
 
 const AdvertsPage = () => {
   const [adverts, setAdverts] = useState([]);
@@ -18,7 +19,7 @@ const AdvertsPage = () => {
     <>
       {console.log('al menos llego', adverts)}
       <Aside className='asideAdvertsPage'>
-        {<p>Aqui metere los filtros</p>}
+        <FilterAdverts />
       </Aside>
       <Main className='mainAdvertsPage'>
         {
