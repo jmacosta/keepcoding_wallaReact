@@ -3,10 +3,12 @@ import { Button } from '../../../Components/sharedComponents/Button';
 import AtIcon from '../../../assets/atIcon.svg?react';
 import LockIcon from '../../../assets/lockIcon.svg?react';
 import Logo from '../../../assets/logo_portrait.svg?react';
+import { UseAuth } from '../context';
 import { login } from '../service';
 import './login.css';
 
 function LoginPage() {
+  const { onLogin } = UseAuth();
   const iconOptions = {
     fill: '#2e2e2e',
     height: '16',
@@ -22,6 +24,7 @@ function LoginPage() {
   const handleSubmit = async event => {
     event.preventDefault();
     await login(credentials);
+    onLogin();
   };
   const handleCredentialsChange = event => {
     setCredentials({
