@@ -72,7 +72,6 @@ h2 {
   flex-wrap: wrap;
   justify-content: flex-start;
   margin: 0 auto;
-  max-width: 1150px;
 }
 
 .card {
@@ -183,7 +182,4 @@ figure .sell_or_search img {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-.asideAdvertsPage {
-  width: 10vw;
 }
