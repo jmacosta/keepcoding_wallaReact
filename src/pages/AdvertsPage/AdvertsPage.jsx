@@ -17,8 +17,10 @@ const AdvertsPage = () => {
   return adverts.length ? (
     <>
       {console.log('al menos llego', adverts)}
-      <Aside></Aside>
-      <Main>
+      <Aside className='asideAdvertsPage'>
+        {<p>Aqui metere los filtros</p>}
+      </Aside>
+      <Main className='mainAdvertsPage'>
         {
           <ul>
             {adverts.map(advert => (

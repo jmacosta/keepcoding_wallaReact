@@ -3,6 +3,31 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: grid;
+  grid-template-areas:
+    'login login'
+    'header header'
+    'aside main'
+    'footer footer';
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 5fr;
+  min-height: 100vh;
+  gap: 1vh;
+}
+
+header {
+  grid-area: header;
+  min-height: 10vh;
+}
+footer {
+  grid-area: footer;
+  min-height: 10vh;
+}
+aside {
+  grid-area: aside;
+}
+main {
+  grid-area: main;
 }
 
 .logo {

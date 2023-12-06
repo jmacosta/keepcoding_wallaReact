@@ -9,7 +9,7 @@ import LoginPage from './pages/auth/LoginPage/LoginPage';
 function App() {
   return (
     <Routes>
-      <Route path='/login' element={<LoginPage />}></Route>
+      <Route path='/login' element={<LoginPage className='login' />}></Route>
       <Route path='/adverts' element={<Layout />}>
         <Route index element={<AdvertsPage />} />
         <Route path=':adverId' element={<AdvertPage />} />

@@ -1,1 +1,3 @@
-export const Aside = () => {};
+export const Aside = ({ className, children }) => {
+  return <aside className={className}>{children}</aside>;
+};

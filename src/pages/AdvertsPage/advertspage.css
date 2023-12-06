@@ -2,7 +2,7 @@ a {
   text-decoration: none;
 }
 
-main {
+main.mainAdvertsPage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,4 +177,13 @@ figure .sell_or_search {
 figure .sell_or_search img {
   width: 100%;
   fill: #fff;
+}
+
+.mainAdvertsPage ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.asideAdvertsPage {
+  width: 10vw;
 }
