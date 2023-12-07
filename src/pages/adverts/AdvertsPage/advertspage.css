@@ -164,7 +164,7 @@ img {
   text-transform: uppercase;
   align-self: flex-end;
 }
-figure .sell_or_search {
+.sell_or_search {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -172,6 +172,7 @@ figure .sell_or_search {
   background-color: var(--primary-color);
   border-radius: 100px;
   padding: 5px 5px 5px 5px;
+  z-index: 50;
 }
 figure .sell_or_search img {
   width: 100%;
