@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../../Components/sharedComponents/Button';
 import AtIcon from '../../../assets/atIcon.svg?react';
 import LockIcon from '../../../assets/lockIcon.svg?react';
@@ -20,11 +21,14 @@ function LoginPage() {
     password: '',
     rememberMe: ''
   });
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const to = location?.state?.from || '/';
   const handleSubmit = async event => {
     event.preventDefault();
     await login(credentials);
     onLogin();
+    navigate(to, { replace: true });
   };
   const handleCredentialsChange = event => {
     setCredentials({
