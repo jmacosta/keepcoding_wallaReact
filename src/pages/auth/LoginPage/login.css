@@ -63,8 +63,8 @@
   background-color: var(--primary-color);
   height: 40px;
   color: white;
-  font-size: 0.8em;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 1px;
   border-radius: 30px;
   margin: 10px;
@@ -130,7 +130,7 @@
 }
 
 main.MainLoginPage {
-  grid-area: login;
+  grid-column: 1 / span 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,4 +144,5 @@ main.MainLoginPage {
   padding: 10px;
   color: white;
   border-radius: 15px;
+  cursor: pointer;
 }
