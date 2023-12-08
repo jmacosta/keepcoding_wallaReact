@@ -7,12 +7,11 @@
   text-align: center;
   display: grid;
   grid-template-areas:
-    'login login'
     'header header'
     'aside main'
     'maincard maincard'
     'footer footer';
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 100px auto 1fr;
   grid-template-columns: 1fr 5fr;
   min-height: 100vh;
   gap: 1vh;
