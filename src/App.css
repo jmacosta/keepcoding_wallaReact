@@ -20,14 +20,16 @@
 
 header {
   grid-area: header;
-  min-height: 10vh;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 footer {
   grid-area: footer;
-  min-height: 10vh;
+  max-height: 5vh;
+  height: 1rem;
+  background-color: var(--primary-color);
 }
 aside {
   grid-area: aside;
