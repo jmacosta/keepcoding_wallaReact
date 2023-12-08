@@ -10,7 +10,7 @@ export const login = userLoginInfo => {
     .post('/api/auth/login', userLoginInfo)
     .then(({ accessToken }) => {
       setAuthorizationHeader(accessToken);
-      // to do manage the state for if persisted
+
       if (rememberMe) {
         storage.set('auth', accessToken);
       }
