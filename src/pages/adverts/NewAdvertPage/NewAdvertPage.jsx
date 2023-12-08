@@ -1,7 +1,40 @@
+import { useState } from 'react';
 import searchIcon from '../../../assets/search_icon.svg';
 import sellIcon from '../../../assets/sell_icon.svg';
 import './NewAdvertPage.css';
 function NewAdvertPage() {
+  const [content, setContent] = useState({
+    name: '',
+    sale: undefined,
+    price: 0,
+    tags: [],
+    photo: null
+  });
+
+  const handlersNewAdvert = {
+    photo(event) {},
+    tags(event) {},
+    normalInput(event) {
+      setContent({
+        ...content,
+        [event.target.name]: event.target.value
+      });
+    },
+    sale(event) {
+      if (event.target.value === 'sell') {
+        setContent({
+          ...content,
+          [event.target.name]: true
+        });
+      } else {
+        setContent({
+          ...content,
+          [event.target.name]: false
+        });
+      }
+    }
+  };
+
   return (
     <main className='mainCard'>
       <form id='product_create'>
@@ -23,6 +56,8 @@ function NewAdvertPage() {
                 required
                 autoComplete='off'
                 title='Por favor rellena este campo'
+                value={content.name}
+                onChange={handlersNewAdvert.normalInput}
               />
               <p className='input__description'>
                 El nombre tiene un limite de 32 caracteres
@@ -56,11 +91,32 @@ function NewAdvertPage() {
                 required
                 name='price'
                 id='price'
+                value={content.price}
+                onChange={handlersNewAdvert.normalInput}
               />
               <p className='input__description'>
                 Precio en € de venta / compra máximo para tu producto
               </p>
             </div>
+
+            {/* <!-- Tags of Product --> */}
+            <div className='input'>
+              <label className='input__label' htmlFor='tags'>
+                Precio
+              </label>
+              <select
+                className='input__field'
+                required
+                name='tags'
+                id='tags'
+                value={content.tags}
+                onChange={handlersNewAdvert.tags}
+              ></select>
+              <p className='input__description'>
+                Precio en € de venta / compra máximo para tu producto
+              </p>
+            </div>
+
             {/* Search / sell Product  */}
 
             <div className='radio-tile-group'>
@@ -69,9 +125,10 @@ function NewAdvertPage() {
                   id='sell'
                   className='radio-button'
                   type='radio'
-                  name='sellOrSearch'
+                  name='sale'
                   required
-                  value='true'
+                  value='sell'
+                  onChange={handlersNewAdvert.sale}
                 />
                 <div className='radio-tile'>
                   <div className='icon sell-icon'>
@@ -88,9 +145,10 @@ function NewAdvertPage() {
                   id='search'
                   className='radio-button'
                   type='radio'
-                  name='sellOrSearch'
+                  name='sale'
                   required
-                  value='false'
+                  value='search'
+                  onChange={handlersNewAdvert.sale}
                 />
                 <div className='radio-tile'>
                   <div className='icon search-icon'>
