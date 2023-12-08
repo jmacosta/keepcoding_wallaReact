@@ -20,7 +20,7 @@ function App() {
         }
       >
         <Route index element={<AdvertsPage />} />
-        <Route path=':adverId' element={<AdvertPage />} />
+        <Route path=':advertId' element={<AdvertPage />} />
         <Route path='new' element={<NewAdvertPage />} />
       </Route>
       <Route path='/' element={<Navigate to='/adverts' />} />
