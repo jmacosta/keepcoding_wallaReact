@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createAdvert } from '../../../api/service';
 import searchIcon from '../../../assets/search_icon.svg';
 import sellIcon from '../../../assets/sell_icon.svg';
 import './NewAdvertPage.css';
@@ -10,10 +12,25 @@ function NewAdvertPage() {
     tags: [],
     photo: null
   });
-
+  const navigate = useNavigate();
   const handlersNewAdvert = {
-    photo(event) {},
-    tags(event) {},
+    photo(event) {
+      const file = event.target.files[0];
+      setContent({
+        ...content,
+        [event.target.name]: file
+      });
+    },
+    tags(event) {
+      const selectedValues = Array.from(event.target.selectedOptions).map(
+        option => option.value
+      );
+
+      setContent({
+        ...content,
+        [event.target.name]: selectedValues
+      });
+    },
     normalInput(event) {
       setContent({
         ...content,
@@ -34,10 +51,21 @@ function NewAdvertPage() {
       }
     }
   };
+  const handleSubmit = async event => {
+    event.preventDefault();
+    try {
+      const advert = await createAdvert({ ...content });
+      navigate(`../${advert.id}`, { relative: 'path' });
+    } catch (error) {
+      if (error.status === 40) {
+        navigate('/login');
+      }
+    }
+  };
 
   return (
     <main className='mainCard'>
-      <form id='product_create'>
+      <form id='product_create' onSubmit={handleSubmit}>
         <div className='modal'>
           <div className='modal__header'>
             <span className='modal__title'>Nuevo producto</span>
@@ -66,14 +94,15 @@ function NewAdvertPage() {
 
             {/* <!-- Image of product --> */}
             <div className='input'>
-              <label className='input__label' htmlFor='image'>
+              <label className='input__label' htmlFor='photo'>
                 Imagen
               </label>
               <input
                 className='input__field'
                 type='file'
-                name='image'
-                id='image'
+                name='photo'
+                id='photo'
+                onChange={handlersNewAdvert.photo}
               />
               <p className='input__description'>
                 Introduce una url válida con la foto de tu producto
@@ -102,18 +131,24 @@ function NewAdvertPage() {
             {/* <!-- Tags of Product --> */}
             <div className='input'>
               <label className='input__label' htmlFor='tags'>
-                Precio
+                Categorias
               </label>
               <select
                 className='input__field'
                 required
                 name='tags'
                 id='tags'
-                value={content.tags}
+                multiple
+                // value={content.tags}
                 onChange={handlersNewAdvert.tags}
-              ></select>
+              >
+                <option value='lifestyle'>Lifestyle</option>
+                <option value='mobile'>Mobile</option>
+                <option value='motor'>Motor</option>
+                <option value='work'>Work</option>
+              </select>
               <p className='input__description'>
-                Precio en € de venta / compra máximo para tu producto
+                Selecciona la(s) categorias en las que publicar tu anuncio
               </p>
             </div>
 
@@ -162,7 +197,11 @@ function NewAdvertPage() {
             </div>
           </div>
           <div className='modal__footer'>
-            <button className='button button--primary' id='productCreateButton'>
+            <button
+              className='button button--primary'
+              id='productCreateButton'
+              type='submit'
+            >
               Crear producto
             </button>
           </div>
