@@ -22,17 +22,21 @@ function LoginPage() {
     rememberMe: ''
   });
   const [error, setError] = useState(null);
+  const [isFetching, setIsFetching] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const to = location?.state?.from || '/';
   const handleSubmit = async event => {
     event.preventDefault();
     try {
+      setIsFetching(true);
       await login(credentials);
       onLogin();
       navigate(to, { replace: true });
     } catch (error) {
       setError(error);
+    } finally {
+      setIsFetching(false);
     }
   };
   const handleCredentialsChange = event => {
@@ -47,8 +51,10 @@ function LoginPage() {
       [event.target.name]: event.target.checked
     });
   };
-
-  const disabled = !(credentials.email && credentials.password);
+  const resetError = () => {
+    setError(null);
+  };
+  const disabled = !(credentials.email && credentials.password && !isFetching);
   return (
     <main className='MainLoginPage'>
       <form
@@ -98,7 +104,7 @@ function LoginPage() {
           />
         </div>
         <Button type='submit' className='submitButton' disabled={disabled}>
-          Enviar
+          {isFetching ? 'Connecting...' : 'Enviar'}
         </Button>
 
         <div className='signupContainer'>
@@ -112,7 +118,11 @@ function LoginPage() {
             Recuerdame en este dispositivo
           </label>
         </div>
-        {error && <div className='error'>🚫 {error.message}</div>}
+        {error && (
+          <div className='error' onClick={resetError}>
+            🚫 {error.message}
+          </div>
+        )}
       </form>
     </main>
   );
