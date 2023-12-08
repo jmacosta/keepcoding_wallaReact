@@ -1,7 +1,10 @@
+import { useParams } from 'react-router-dom';
 import './advertPage.css';
 import { AdvertDetailCard } from './components/AdvertDetailCard';
 
 function AdvertPage() {
+  // Todo use Effect like thet get adverts
+
   const product = {
     name: 'Sell Thing',
     description: 'Description thing',
@@ -10,6 +13,7 @@ function AdvertPage() {
     sellOrSearch: true,
     tags: ['work', 'motor', 'lifestyle', 'mobile']
   };
+  const params = useParams();
 
   return <AdvertDetailCard advert={product} />;
 }
