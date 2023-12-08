@@ -21,14 +21,19 @@ function LoginPage() {
     password: '',
     rememberMe: ''
   });
+  const [error, setError] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
   const to = location?.state?.from || '/';
   const handleSubmit = async event => {
     event.preventDefault();
-    await login(credentials);
-    onLogin();
-    navigate(to, { replace: true });
+    try {
+      await login(credentials);
+      onLogin();
+      navigate(to, { replace: true });
+    } catch (error) {
+      setError(error);
+    }
   };
   const handleCredentialsChange = event => {
     setCredentials({
@@ -56,6 +61,7 @@ function LoginPage() {
           <Logo height={'10vh'} />
         </div>
         <p className='heading'>Iniciar sesión</p>
+
         <div className='inputContainer'>
           <AtIcon
             fill={iconOptions.fill}
@@ -91,7 +97,6 @@ function LoginPage() {
             value={credentials.password}
           />
         </div>
-
         <Button type='submit' className='submitButton' disabled={disabled}>
           Enviar
         </Button>
@@ -107,6 +112,7 @@ function LoginPage() {
             Recuerdame en este dispositivo
           </label>
         </div>
+        {error && <div className='error'>🚫 {error.message}</div>}
       </form>
     </main>
   );
