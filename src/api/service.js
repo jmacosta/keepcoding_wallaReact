@@ -9,3 +9,6 @@ export const createAdvert = advertData => {
     headers: { 'Content-Type': 'multipart/form-data' }
   });
 };
+export const getAdvert = advertId => {
+  return client.get(`${advertsUrl}/${advertId}`);
+};

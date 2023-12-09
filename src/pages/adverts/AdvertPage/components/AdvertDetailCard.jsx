@@ -3,6 +3,8 @@ import noImage from '../../../../assets/no-image.jpg';
 import { sellSearchIcon } from '../../../../utils/sellSearchIcon';
 export const AdvertDetailCard = ({ advert }) => {
   const [imageError, setImageError] = useState(false);
+  const tags = advert.tags || [];
+
   return (
     <>
       <main className='detail__advert mainCard '>
@@ -13,17 +15,15 @@ export const AdvertDetailCard = ({ advert }) => {
           <div className='modal__body'>
             <div className='modal-content sell_or_search' id='sellSearch'>
               <img
-                src={sellSearchIcon(advert.sellOrSearch).image}
-                alt={sellSearchIcon(advert.sellOrSearch).alt}
+                src={sellSearchIcon(advert.sale).image}
+                alt={sellSearchIcon(advert.sale).alt}
               />
             </div>
             <div className='modal-content photo' id='photo'>
               <img
                 className='photo'
-                src={imageError ? noImage : `../../assets/${advert.image}`}
-                onError={() => {
-                  setImageError(true);
-                }}
+                src={`${advert.photo === null ? noImage : advert.photo}`}
+                alt={advert.name}
               />
             </div>
             {/* <!-- Price of Product --> */}
@@ -32,8 +32,10 @@ export const AdvertDetailCard = ({ advert }) => {
             </div>
 
             <div className='modal-content tag' id='tags'>
-              {advert.tags.map(tag => (
-                <span className='tags'>{tag} </span>
+              {tags.map((tag, index) => (
+                <span key={index} className='tags'>
+                  {tag}{' '}
+                </span>
               ))}
             </div>
           </div>

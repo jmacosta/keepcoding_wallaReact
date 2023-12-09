@@ -1,20 +1,18 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getAdvert } from '../../../api/service';
 import './advertPage.css';
 import { AdvertDetailCard } from './components/AdvertDetailCard';
 
 function AdvertPage() {
-  // Todo use Effect like thet get adverts
+  const { advertId } = useParams();
 
-  const product = {
-    name: 'Sell Thing',
-    description: 'Description thing',
-    image: 'no-image.jpg',
-    price: 50,
-    sellOrSearch: true,
-    tags: ['work', 'motor', 'lifestyle', 'mobile']
-  };
-  const params = useParams();
+  // const advertId = 'bb37771a-5832-4234-8021-79f8118d893a';
+  const [advert, setAdvert] = useState([]);
+  useEffect(() => {
+    getAdvert(advertId).then(advert => setAdvert(advert));
+  }, [advertId]);
 
-  return <AdvertDetailCard advert={product} />;
+  return <AdvertDetailCard key={advertId} advert={advert} />;
 }
 export default AdvertPage;
