@@ -75,8 +75,8 @@ h2 {
 }
 
 .card {
-  width: 300px;
-  height: 300px;
+  width: 340px;
+  height: 340px;
   display: flex;
   flex-direction: column;
 
@@ -164,6 +164,18 @@ img {
   text-transform: uppercase;
   align-self: flex-end;
 }
+.card .text-content .tag {
+  color: var(--primary-color);
+  text-align: right;
+  font-family: Roboto;
+  font-size: smaller;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  align-self: center;
+}
+
 .sell_or_search {
   position: absolute;
   top: 10px;
@@ -173,6 +185,7 @@ img {
   border-radius: 100px;
   padding: 5px 5px 5px 5px;
   z-index: 50;
+  margin-bottom: 10px;
 }
 figure .sell_or_search img {
   width: 100%;
