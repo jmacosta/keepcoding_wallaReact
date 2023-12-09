@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import magnifyGlass from '../../../../assets/magnify-glass.svg';
 import noImage from '../../../../assets/no-image.jpg';
 import { sellSearchIcon } from '../../../../utils/sellSearchIcon';
 export const AdvertCard = ({ sale, photo, name, price, tags, id }) => {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <Link to={`${id}`}>
       <div className='card'>
@@ -18,16 +15,19 @@ export const AdvertCard = ({ sale, photo, name, price, tags, id }) => {
           </div>
           <img
             className='product_image'
-            src={imageError ? noImage : `${photo}`}
-            onError={() => {
-              setImageError(true);
-            }}
+            src={`${photo === null ? noImage : photo}`}
             alt={name}
           />
         </figure>
         <div className='text-content'>
           <div className='product_name'>{name}</div>
-          <h5>{tags.join(' ')}</h5>
+          <div className='tag' id='tags'>
+            {tags.map((tag, index) => (
+              <span key={index} className='tags'>
+                {tag}{' '}
+              </span>
+            ))}
+          </div>
           <div className='product_price'>{price}€</div>
         </div>
         <div className='overlay'>
