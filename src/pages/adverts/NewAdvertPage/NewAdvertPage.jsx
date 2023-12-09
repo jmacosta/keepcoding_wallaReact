@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../../../Components/sharedComponents/Button';
 import { createAdvert } from '../../../api/service';
 import searchIcon from '../../../assets/search_icon.svg';
 import sellIcon from '../../../assets/sell_icon.svg';
@@ -12,6 +13,7 @@ function NewAdvertPage() {
     tags: [],
     photo: null
   });
+  const [isFetching, setIsFetching] = useState(false);
   const navigate = useNavigate();
   const handlersNewAdvert = {
     photo(event) {
@@ -54,14 +56,24 @@ function NewAdvertPage() {
   const handleSubmit = async event => {
     event.preventDefault();
     try {
+      setIsFetching(true);
       const advert = await createAdvert({ ...content });
       navigate(`../${advert.id}`, { relative: 'path' });
     } catch (error) {
       if (error.status === 40) {
         navigate('/login');
       }
+    } finally {
+      setIsFetching(false);
     }
   };
+  const isDisabled = !(
+    content.name &&
+    content.sale &&
+    content.price &&
+    content.tags &&
+    !isFetching
+  );
 
   return (
     <main className='mainCard'>
@@ -197,13 +209,13 @@ function NewAdvertPage() {
             </div>
           </div>
           <div className='modal__footer'>
-            <button
-              className='button button--primary'
-              id='productCreateButton'
-              type='submit'
+            <Button
+              className={'button button--primary '}
+              type={'submit'}
+              disabled={isDisabled}
             >
-              Crear producto
-            </button>
+              {isFetching ? 'Sending...' : 'Crear anuncio'}
+            </Button>
           </div>
         </div>
       </form>

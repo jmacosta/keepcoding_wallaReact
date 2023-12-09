@@ -212,3 +212,9 @@ select option:checked {
   background-color: var(--primary-color);
   color: white;
 }
+
+.button--primary:disabled {
+  cursor: default;
+  background-color: rgb(173, 173, 173);
+  border-color: rgb(173, 173, 173);
+}
