@@ -13,7 +13,7 @@
     'maincard maincard'
     'footer footer';
   grid-template-rows: 100px auto 1fr;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 200px auto;
   min-height: 100vh;
   gap: 1vh;
 }
@@ -35,12 +35,13 @@ aside {
   grid-area: aside;
   display: flex;
   flex-direction: column;
-
   border-radius: 5px;
   border: 0.25px solid #cacaca;
   background: #fff;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.3);
   padding-top: 10vh;
+  flex-wrap: wrap;
+  align-items: center;
 }
 main {
   grid-area: main;
