@@ -39,3 +39,7 @@ input {
   margin-left: 10px;
   text-align: right;
 }
+.filterButton {
+  margin-bottom: 10px;
+  width: 70%;
+}

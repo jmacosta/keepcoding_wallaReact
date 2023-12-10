@@ -1,26 +1,42 @@
 import { useState } from 'react';
 import './filterAdverts.css';
-export const FilterAdverts = ({ adverts, onFilterAdverts }) => {
-  const [filterFields, setFilterFields] = useState({
+export const FilterAdverts = ({ adverts, onFilterAdverts, initialAdverts }) => {
+  let maxValue = 0;
+  adverts.forEach(item => {
+    if (item.price > maxValue) {
+      maxValue = item.price;
+    }
+  });
+  const emptyFilters = {
     name: '',
     minPrice: 0,
-    maxPrice: 0,
+    maxPrice: maxValue,
     sell: false,
     search: false,
     lifestyle: false,
     motor: false,
     mobile: false,
     work: false
-  });
+  };
+  const [filterFields, setFilterFields] = useState(emptyFilters);
 
+  const handleReset = () => {
+    onFilterAdverts(initialAdverts);
+    setFilterFields(emptyFilters);
+  };
   const handleFilter = () => {
+    const searchTags = `${filterFields.lifestyle ? 'lifestyle' : ''}${
+      filterFields.mobile ? 'mobile' : ''
+    }${filterFields.motor ? 'motor' : ''}${filterFields.work ? 'work' : ''}`;
+
     const newAdverts = adverts.filter(
       item =>
         (item.sale === filterFields.sell ||
           item.sale !== filterFields.search) &&
         item.name.toLowerCase().includes(filterFields.name.toLowerCase()) &&
-        (item.price >= filterFields.minPrice ||
-          item.price <= filterFields.maxPrice)
+        item.price >= filterFields.minPrice &&
+        item.price <= filterFields.maxPrice &&
+        item.tags.join('').toLowerCase().includes(searchTags)
     );
 
     onFilterAdverts(newAdverts);
@@ -37,6 +53,17 @@ export const FilterAdverts = ({ adverts, onFilterAdverts }) => {
       setFilterFields({
         ...filterFields,
         [event.target.name]: event.target.checked
+      });
+    },
+    inputMinPrice(event) {
+      const newMaxPrice =
+        Number(event.target.value) > Number(filterFields.maxPrice)
+          ? event.target.value
+          : filterFields.maxPrice;
+      setFilterFields({
+        ...filterFields,
+        [event.target.name]: event.target.value,
+        maxPrice: newMaxPrice
       });
     }
   };
@@ -61,7 +88,7 @@ export const FilterAdverts = ({ adverts, onFilterAdverts }) => {
             <input
               name={'minPrice'}
               id={'minPrice'}
-              onChange={handleInputsFilter.input}
+              onChange={handleInputsFilter.inputMinPrice}
               value={filterFields.minPrice}
               min={0}
               type='number'
@@ -74,7 +101,7 @@ export const FilterAdverts = ({ adverts, onFilterAdverts }) => {
               id={'maxPrice'}
               onChange={handleInputsFilter.input}
               value={filterFields.maxPrice}
-              min={0}
+              min={filterFields.minPrice}
               type='number'
             />
           </div>
@@ -154,8 +181,17 @@ export const FilterAdverts = ({ adverts, onFilterAdverts }) => {
         </div>
       </div>
 
-      <button className='button button--primary' onClick={handleFilter}>
+      <button
+        className={`button button--primary filterButton`}
+        onClick={handleFilter}
+      >
         Aplicar Filtro
+      </button>
+      <button
+        className={`button button--primary filterButton`}
+        onClick={handleReset}
+      >
+        Restaurar Filtro
       </button>
     </>
   );
