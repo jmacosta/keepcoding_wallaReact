@@ -9,6 +9,10 @@ import './advertspage.css';
 
 const AdvertsPage = () => {
   const [adverts, setAdverts] = useState([]);
+
+  const onFilterAdverts = filteredAdverts => {
+    setAdverts(filteredAdverts);
+  };
   useEffect(() => {
     getLatestAdverts().then(adverts => setAdverts(adverts));
   }, []);
@@ -16,7 +20,7 @@ const AdvertsPage = () => {
   return adverts.length ? (
     <>
       <Aside className='asideAdvertsPage'>
-        <FilterAdverts />
+        <FilterAdverts adverts={adverts} onFilterAdverts={onFilterAdverts} />
       </Aside>
       <Main className='mainAdvertsPage'>
         {
@@ -31,7 +35,9 @@ const AdvertsPage = () => {
       </Main>
     </>
   ) : (
-    <Button>Crea tu primer anuncio...</Button>
+    <>
+      <Button>Crea tu primer anuncio...</Button>
+    </>
   );
 };
 export default AdvertsPage;
