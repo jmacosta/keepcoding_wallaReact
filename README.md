@@ -9,7 +9,7 @@ El proyecto está organizado en varias carpetas principales:
 - `src/`
   - `api/`: Contiene archivos relacionados con la gestión de peticiones a la API.
   - `components/`: Contiene los componentes reutilizables en varias partes del proyecto, 
-  - `assets/`: Contiene imasgenes y recursos usados en varias partes del proyecto, 
+  - `assets/`: Contiene imágenes y recursos usados en varias partes del proyecto, 
   - `pages/`: Contiene las páginas principales de la aplicación organizadas por funcionalidad, como AdvertsPage, AdvertPage, NewAdvertPage, LoginPage, etc.
   - `utils/`: Incluye algunas funciones usadas en distintos componentes que no pertenecen a los servicios propios de la API.
   
