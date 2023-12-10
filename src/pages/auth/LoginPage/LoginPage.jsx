@@ -5,7 +5,6 @@ import AtIcon from '../../../assets/atIcon.svg?react';
 import LockIcon from '../../../assets/lockIcon.svg?react';
 import Logo from '../../../assets/logo_portrait.svg?react';
 import { UseAuth } from '../context';
-import { login } from '../service';
 import './login.css';
 
 function LoginPage() {
@@ -30,8 +29,8 @@ function LoginPage() {
     event.preventDefault();
     try {
       setIsFetching(true);
-      await login(credentials);
-      onLogin();
+      await onLogin(credentials);
+
       navigate(to, { replace: true });
     } catch (error) {
       setError(error);
