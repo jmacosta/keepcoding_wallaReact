@@ -8,7 +8,7 @@ import './NewAdvertPage.css';
 function NewAdvertPage() {
   const [content, setContent] = useState({
     name: '',
-    sale: undefined,
+    sale: null,
     price: 0,
     tags: [],
     photo: null
@@ -69,9 +69,9 @@ function NewAdvertPage() {
   };
   const isDisabled = !(
     content.name &&
-    content.sale &&
+    content.sale !== null &&
     content.price &&
-    content.tags &&
+    content.tags.length !== 0 &&
     !isFetching
   );
 
