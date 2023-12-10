@@ -3,9 +3,9 @@ import logo from '../../assets/logo_horizontal.svg';
 import { UseAuth } from '../../pages/auth/context';
 import './header.css';
 const Header = ({ className }) => {
-  const { isLogged, onLogout } = UseAuth;
+  const { isLogged, onLogout } = UseAuth();
   return (
-    <header className={className}>
+    <header className={'header'}>
       <div className='logo'>
         <Link to='/adverts'>
           <img src={logo} />
@@ -13,15 +13,16 @@ const Header = ({ className }) => {
       </div>
       <nav>
         <ul>
-          <li>
-            <NavLink to='/adverts' end>
-              Ver últimos anuncios
-            </NavLink>
+          <NavLink to='/adverts' end>
+            <li>Ver últimos anuncios</li>
+          </NavLink>
+
+          <NavLink to='/adverts/new'>
+            <li>Crear anuncio</li>
+          </NavLink>
+          <li className='logout' onClick={onLogout}>
+            Logout
           </li>
-          <li>
-            <NavLink to='/adverts/new'>Crear anuncio</NavLink>
-          </li>
-          <li>Logout</li>
         </ul>
       </nav>
     </header>
