@@ -12,3 +12,7 @@ export const createAdvert = advertData => {
 export const getAdvert = advertId => {
   return client.get(`${advertsUrl}/${advertId}`);
 };
+
+export const deleteAdvert = advertId => {
+  return client.delete(`${advertsUrl}/${advertId}`);
+};

@@ -1,9 +1,22 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ConfirmComponent } from '../../../../Components/sharedComponents/ConfirmComponent';
+import { deleteAdvert } from '../../../../api/service';
 import noImage from '../../../../assets/no-image.jpg';
 import { sellSearchIcon } from '../../../../utils/sellSearchIcon';
 export const AdvertDetailCard = ({ advert }) => {
   const [imageError, setImageError] = useState(false);
+  const [confirm, setconfirmed] = useState(false);
   const tags = advert.tags || [];
+  const navigate = useNavigate();
+  const resetFunction = () => {
+    setconfirmed(false);
+  };
+  const id = advert.id;
+  const deletethisAdvert = async id => {
+    await deleteAdvert(id);
+    navigate('/');
+  };
 
   return (
     <>
@@ -40,11 +53,26 @@ export const AdvertDetailCard = ({ advert }) => {
             </div>
           </div>
           <div className='modal__footer'>
-            <button className='button button--primary ' id='deleteButton'>
+            <button
+              className='button button--primary '
+              id='deleteButton'
+              onClick={() => {
+                setconfirmed(true);
+              }}
+            >
               Borrar Anuncio
             </button>
           </div>
         </div>
+        {confirm && (
+          <ConfirmComponent
+            execFunction={deletethisAdvert}
+            resetFunction={resetFunction}
+            parameter={id}
+          >
+            ¿Está seguro que desea borrar el anuncio?
+          </ConfirmComponent>
+        )}
       </main>
     </>
   );
