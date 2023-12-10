@@ -1,0 +1,20 @@
+.confirm {
+  border: solid 2px var(--primary-color);
+  width: 30vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 15px 30px 0 rgba(var(--primary-color-RGB), 0.15);
+  border-radius: 10px;
+}
+.confirmText {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.confirmButton {
+  padding: 5px 10px;
+  margin: 5px;
+}
